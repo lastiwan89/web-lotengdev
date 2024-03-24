@@ -1,28 +1,30 @@
-# Lotengdev website
+# React + TypeScript + Vite
 
-![Lotengdev web](https://user-images.githubusercontent.com/4420029/197935411-17fd5aed-a9a3-49ef-81ee-612da5181d3f.png)
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Lombok Tengah Developer Website
+Currently, two official plugins are available:
 
-List fitur/halaman:
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-- [ ] Halaman List Event yang sudah terlaksana dan yang akan datang
-- [ ] Halaman daftar pembicara yang sudah berkontribusi mengisi acara
-- [ ] Halaman about yang berisi tentang komunitas
+## Expanding the ESLint configuration
 
-# 📜 Cara Kontribusi
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-1. Lihat desian di Figma: https://www.figma.com/file/axXbAb5zBrfxLaJSo5MHrQ/Loteng-Dev-Design-Assets?node-id=108%3A10664
-2. Cek [Issue](https://github.com/Loteng-Dev/lotengdev-web/issues) untuk mengambil task yang ingin kamu kerjakan
-3. Lakukan pull request ke repo ini
+- Configure the top-level `parserOptions` property like this:
 
-# 🧰 Tools yang dipakai di Project ini
+```js
+export default {
+  // other rules...
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: ['./tsconfig.json', './tsconfig.node.json'],
+    tsconfigRootDir: __dirname,
+  },
+}
+```
 
-1. HTML
-3. Nodejs -- buat install dan setup Tailwind
-3. Tailwind CSS
-
-# 📬 Punya saran, ide, atau pertanyaan?
-
-Kirimkan dengan [membuka issue baru](https://github.com/Loteng-Dev/lotengdev-web/issues/new)
-atau gabung di Group Telegram Lotengdev.
+- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
+- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
